@@ -73,6 +73,7 @@ ggplot(total_steps, aes(x=date, y=total)) + geom_bar(stat="identity") + xlab("Da
 ```
 
 ![plot of chunk unnamed-chunk-3](PA1_template_files/figure-html/unnamed-chunk-3.png) 
+
 Average and median number of daily steps can be calculated from the data frame I've produced in previous assignment.
 
 
@@ -117,11 +118,13 @@ maximum_steps <- average_steps %>%
   arrange(desc(max_steps)) %>%
   slice(1)
 ```
+
 Interval which has maximum number of steps on average is 835
 
 
 ## Imputing missing values
 There are 2304 missing values in the data. This can be calculated with following R-code:
+
 
 ```r
 sum(is.na(activity$steps))
@@ -152,6 +155,7 @@ ggplot(total_steps.imputed, aes(x=date, y=total)) + geom_bar(stat="identity") + 
 ```
 
 ![plot of chunk unnamed-chunk-9](PA1_template_files/figure-html/unnamed-chunk-9.png) 
+
 Calculate average and median for daily total steps:
 
 
@@ -172,6 +176,7 @@ median(total_steps.imputed$total)
 ```
 
 I notice that average and median are greater with imputed values comparing to values without imputation. With imputed data, median and average are the same but if we check the distribution of new values, we notice that there are some deviation within values:
+
 
 ```r
 summary(total_steps.imputed$total)

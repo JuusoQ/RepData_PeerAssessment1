@@ -51,6 +51,7 @@ total_steps <- activity %>%
 ggplot(total_steps, aes(x=date, y=total)) + geom_bar(stat="identity") + xlab("Date") + ylab("Total steps taken each day")
 
 ```
+
 Average and median number of daily steps can be calculated from the data frame I've produced in previous assignment.
 
 ```{r, results='asis'}
@@ -84,11 +85,13 @@ maximum_steps <- average_steps %>%
   slice(1)
 
 ```
+
 Interval which has maximum number of steps on average is `r maximum_steps[,c("interval")] `
 
 
 ## Imputing missing values
 There are `r sum(is.na(activity$steps)) ` missing values in the data. This can be calculated with following R-code:
+
 ```{r,results='asis'}
 sum(is.na(activity$steps))
 ```
@@ -115,6 +118,7 @@ total_steps.imputed <- activity.imputed %>% group_by(date) %>% summarise(total=s
 ggplot(total_steps.imputed, aes(x=date, y=total)) + geom_bar(stat="identity") + xlab("Date") + ylab("Total steps taken each day (imputed)")
 
 ```
+
 Calculate average and median for daily total steps:
 
 ```{r, results='markup'}
@@ -123,6 +127,7 @@ median(total_steps.imputed$total)
 ```
 
 I notice that average and median are greater with imputed values comparing to values without imputation. With imputed data, median and average are the same but if we check the distribution of new values, we notice that there are some deviation within values:
+
 ```{r,results='markup'}
 summary(total_steps.imputed$total)
 ```
