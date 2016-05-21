@@ -5,8 +5,6 @@ output:
     keep_md: true
 ---
 
-#Reproducible Research: Peer Assessment 1
-
 
 ## Loading and preprocessing the data
 
@@ -92,7 +90,7 @@ Interval which has maximum number of steps on average is `r maximum_steps[,c("in
 ## Imputing missing values
 There are `r sum(is.na(activity$steps)) ` missing values in the data. This can be calculated with following R-code:
 
-```{r,results='asis'}
+```{r,results='markup'}
 sum(is.na(activity$steps))
 ```
 

@@ -1,7 +1,5 @@
 # Reproducible Research: Peer Assessment 1
 
-#Reproducible Research: Peer Assessment 1
-
 
 ## Loading and preprocessing the data
 
@@ -130,7 +128,9 @@ There are 2304 missing values in the data. This can be calculated with following
 sum(is.na(activity$steps))
 ```
 
-[1] 2304
+```
+## [1] 2304
+```
 
 My strategy to impute is to write a function that calculates average number of steps for each interval and fill missing observations with average value. Luckily, we have already calculated average steps for each interval so we can use that data for imputing. That data is in the average_steps -data frame. I'll join these two data frames and mutate the value of steps -column with a
 
