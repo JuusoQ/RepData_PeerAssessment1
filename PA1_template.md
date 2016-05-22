@@ -132,7 +132,7 @@ sum(is.na(activity$steps))
 ## [1] 2304
 ```
 
-My strategy to impute is to write a function that calculates average number of steps for each interval and fill missing observations with average value. Luckily, we have already calculated average steps for each interval so we can use that data for imputing. That data is in the average_steps -data frame. I'll join these two data frames and mutate the value of steps -column with a
+My strategy to impute is to fill missing observations with average value of specific interval. Luckily, we have already calculated average steps for each interval so we can use that data for imputing. That data is in the average_steps -data frame. I'll join these two data frames and mutate the value of steps -column with a
 
 
 ```r

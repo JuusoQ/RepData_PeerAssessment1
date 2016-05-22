@@ -94,7 +94,7 @@ There are `r sum(is.na(activity$steps)) ` missing values in the data. This can b
 sum(is.na(activity$steps))
 ```
 
-My strategy to impute is to write a function that calculates average number of steps for each interval and fill missing observations with average value. Luckily, we have already calculated average steps for each interval so we can use that data for imputing. That data is in the average_steps -data frame. I'll join these two data frames and mutate the value of steps -column with a
+My strategy to impute is to fill missing observations with average value of specific interval. Luckily, we have already calculated average steps for each interval so we can use that data for imputing. That data is in the average_steps -data frame. I'll join these two data frames and mutate the value of steps -column with a
 
 ```{r, echo=TRUE}
 
@@ -110,7 +110,7 @@ activity.imputed$avg <- NULL
 
 ```
 
-```{r, results='asis'}
+```{r, results='markup', echo=TRUE}
 total_steps.imputed <- activity.imputed %>% group_by(date) %>% summarise(total=sum(steps))
   
 ggplot(total_steps.imputed, aes(x=date, y=total)) + geom_bar(stat="identity") + xlab("Date") + ylab("Total steps taken each day (imputed)")
@@ -119,14 +119,14 @@ ggplot(total_steps.imputed, aes(x=date, y=total)) + geom_bar(stat="identity") + 
 
 Calculate average and median for daily total steps:
 
-```{r, results='markup'}
+```{r, results='markup', echo=TRUE}
 mean(total_steps.imputed$total)
 median(total_steps.imputed$total)
 ```
 
 I notice that average and median are greater with imputed values comparing to values without imputation. With imputed data, median and average are the same but if we check the distribution of new values, we notice that there are some deviation within values:
 
-```{r,results='markup'}
+```{r,results='markup', echo=TRUE}
 summary(total_steps.imputed$total)
 ```
 
@@ -136,7 +136,7 @@ summary(total_steps.imputed$total)
 
 In this part, I'll first use the weekdays -function to create a new factor variable that contains the weekday related to the date.
 
-```{r, results='markup'}
+```{r, results='markup', echo=TRUE}
 activity.imputed$weekday_type <- ifelse(weekdays(activity.imputed$date) %in% c("Saturday","Sunday"), "weekend", "weekday")
 
 average_steps_per_interval.imputed <- activity.imputed %>% 

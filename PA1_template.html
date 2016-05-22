@@ -146,7 +146,7 @@ plot(average_steps, type=&quot;l&quot;,xlab = &quot;Interval&quot;, ylab=&quot;A
 <p>There are 2304 missing values in the data. This can be calculated with following R-code:</p>
 <pre class="r"><code>sum(is.na(activity$steps))</code></pre>
 <pre><code>## [1] 2304</code></pre>
-<p>My strategy to impute is to write a function that calculates average number of steps for each interval and fill missing observations with average value. Luckily, we have already calculated average steps for each interval so we can use that data for imputing. That data is in the average_steps -data frame. I’ll join these two data frames and mutate the value of steps -column with a</p>
+<p>My strategy to impute is to fill missing observations with average value of specific interval. Luckily, we have already calculated average steps for each interval so we can use that data for imputing. That data is in the average_steps -data frame. I’ll join these two data frames and mutate the value of steps -column with a</p>
 <pre class="r"><code>#copy activity to another data frame
 activity.imputed &lt;- activity
 #join with average_steps
